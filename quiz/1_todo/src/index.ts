@@ -1,8 +1,22 @@
+// type Todo = {
+//   id: number;
+//   title: string;
+//   done: boolean;
+// };
+
 // let todoItems: object[];
-let todoItems: { id: number, title: string, done: boolean }[];
+// let todoItems: { id: number, title: string, done: boolean }[];
+
+interface Todo {
+  id: number;
+  title: string;
+  done: boolean;
+}
+
+let todoItems: Todo[];
 
 // api
-function fetchTodoItems(): { id: number; title: string; done: boolean }[] {
+function fetchTodoItems(): Todo[] {
   const todos = [
     { id: 1, title: 'Hello', done: false },
     { id: 2, title: 'Type', done: false },
@@ -17,7 +31,7 @@ function fetchTodos(): object[] {
   return todos;
 }
 
-function addTodo(todo: { id: number; title: string; done: boolean }): void {
+function addTodo(todo: Todo): void {
   todoItems.push(todo);
 }
 
@@ -25,7 +39,7 @@ function deleteTodo(index: number): void {
   todoItems.splice(index, 1);
 }
 
-function completeTodo(index: number, todo: { id: number; title: string; done: boolean }): void {
+function completeTodo(index: number, todo: Todo): void {
   todo.done = true;
   todoItems.splice(index, 1, todo);
 }
@@ -35,8 +49,8 @@ function logFirstTodo(): object {
   return todoItems[0];
 }
 
-function showCompleted(): { id: number; title: string; done: boolean }[] {
-  return todoItems.filter((item: { id: number; title: string; done: boolean }) => item.done);
+function showCompleted(): Todo[] {
+  return todoItems.filter((item: Todo) => item.done);
 }
 
 function addTwoTodoItems(todo1: any, todo2: any) {
@@ -49,8 +63,8 @@ function log(): void {
   console.log(todoItems);
 }
 
-let todo1 = { id: 4, title: '타입', done: false };
-let todo2 = { id: 5, title: '타입', done: false };
+let todo1 = { id: 4, title: 'Type', done: false };
+let todo2 = { id: 5, title: 'Type', done: false };
 
 todoItems = fetchTodoItems();
 addTwoTodoItems(todo1, todo2);
